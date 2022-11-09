@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "tsconfig/nextjs.json",
+  "include": ["src", "index.ts", "transformer.ts", "node_modules/@kodemo/auth/types/*.d.ts", "types/*.d.ts"],
+  "exclude": ["node_modules"]
+}

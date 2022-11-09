@@ -1,0 +1,19 @@
+version: "3.8"
+
+volumes:
+  database:
+
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: kodemo_db
+    restart: unless-stopped
+    ports:
+      - 54320:5432
+    environment:
+      - POSTGRES_DB=kodemo
+      - POSTGRES_USER=kodemo
+      - POSTGRES_PASSWORD=kodemo
+    volumes:
+      - database:/var/lib/mysql

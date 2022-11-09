@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@kodemo/root",
+  "version": "0.0.0",
+  "author": {
+    "email": "hi@pkr.sh",
+    "name": "Jeremie PARKER",
+    "url": "https://pkr.sh"
+  },
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "prisma": {
+    "schema": "packages/database/prisma/schema.prisma",
+    "seed": "tsx packages/database/src/seed.ts"
+  },
+  "scripts": {
+    "with-env": "dotenv -e .env",
+    "clean:workspaces": "turbo clean",
+    "clean": "rm -rf node_modules",
+    "build": "yarn with-env turbo run build",
+    "dev": "yarn with-env turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
+    "db:studio": "turbo run db:studio",
+    "generate": "yarn with-env turbo run generate"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^6.0.0",
+    "prettier": "^2.5.1",
+    "tsx": "^3.7.1",
+    "turbo": "latest"
+  },
+  "dependencies": {}
+}

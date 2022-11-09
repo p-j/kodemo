@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "tsconfig/nextjs.json",
+  "include": [
+    "node_modules/@kodemo/auth/types/*.d.ts",
+    "types/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.js"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["./*"]
+    }
+  }
+}
