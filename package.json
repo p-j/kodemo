@@ -28,7 +28,8 @@
     "db:push": "turbo run db:push",
     "db:seed": "turbo run db:seed",
     "db:studio": "turbo run db:studio",
-    "generate": "yarn with-env turbo run generate"
+    "db:format": "turbo run db:format",
+    "db:generate": "yarn with-env turbo run db:generate"
   },
   "devDependencies": {
     "dotenv-cli": "^6.0.0",

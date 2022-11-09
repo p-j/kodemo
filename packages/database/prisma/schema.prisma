@@ -10,10 +10,49 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id      String @id @default(cuid())
-  title   String
-  content String
+model Property {
+  id        String            @id @default(cuid())
+  title     String
+  features  PropertyFeature[]
+  userId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pictures  Picture[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model Feature {
+  id          String            @id @default(cuid())
+  name        String
+  icon        String
+  description String            @db.Text
+  properties  PropertyFeature[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model PropertyFeature {
+  featureId  String
+  propertyId String
+  value      String   @db.Text
+  feature    Feature  @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@id([featureId, propertyId])
+}
+
+model Picture {
+  id         String   @id @default(cuid())
+  src        String   @db.Text
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  order      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 // NextAuth.js Models
@@ -47,13 +86,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  properties    Property[]
+  pictures      Picture[]
 }
 
 model VerificationToken {

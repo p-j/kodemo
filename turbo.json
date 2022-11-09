@@ -5,33 +5,16 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
-    "db:migrate:deploy": {
-      "outputs": []
-    },
-    "db:push": {
-      "outputs": []
-    },
-    "db:seed": {
-      "outputs": []
-    },
-    "db:studio": {
-      "outputs": []
-    },
-    "dev": {
-      "cache": false
-    },
-    "generate": {
-      "dependsOn": ["^generate"]
-    },
-    "lint": {
-      "outputs": []
-    },
-    "clean": {
-      "cache": false
-    },
-    "//#clean": {
-      "cache": false
-    }
+    "db:migrate:deploy": { "outputs": [] },
+    "db:push": { "outputs": [] },
+    "db:seed": { "outputs": [] },
+    "db:studio": { "outputs": [] },
+    "db:format": { "outputs": [] },
+    "db:generate": { "dependsOn": ["^db:generate"] },
+    "dev": { "cache": false },
+    "lint": { "outputs": [] },
+    "clean": { "cache": false },
+    "//#clean": { "cache": false }
   },
   "globalEnv": [
     "NODE_ENV",
