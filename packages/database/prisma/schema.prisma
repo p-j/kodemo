@@ -10,37 +10,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PropertyType {
+  APPARTMENT
+  HOUSE
+}
+
+enum RentType {
+  SHARED
+  FULL
+}
+
+enum State {
+  AVAILABLE
+  UNAVAILABLE
+}
+
 model Property {
-  id        String            @id @default(cuid())
-  title     String
-  features  PropertyFeature[]
-  userId    String
-  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  pictures  Picture[]
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
+  id           String       @id @default(cuid())
+  amenities    Amenity[]
+  createdAt    DateTime     @default(now())
+  description  String       @db.Text
+  roomCount    Int
+  bedroomCount Int
+  floor        Int?
+  floorCount   Int?
+  surface      Float
+  totalSurface Float?
+  hasElevator  Boolean?
+  listings     Listing[]
+  pictures     Picture[]
+  reference    String       @unique
+  rentType     RentType
+  title        String
+  type         PropertyType
+  updatedAt    DateTime     @updatedAt
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
 }
 
-model Feature {
-  id          String            @id @default(cuid())
-  name        String
-  icon        String
-  description String            @db.Text
-  properties  PropertyFeature[]
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
-}
-
-model PropertyFeature {
-  featureId  String
+model Listing {
+  id         String    @id @default(cuid())
   propertyId String
-  value      String   @db.Text
-  feature    Feature  @relation(fields: [featureId], references: [id], onDelete: Cascade)
-  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  state      State     @default(AVAILABLE)
+  from       DateTime?
+  duration   String?
+  price      Float
+  utilities  Float
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  property   Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 
-  @@id([featureId, propertyId])
+  @@unique([propertyId, from, duration])
+}
+
+model Amenity {
+  id         String     @id @default(cuid())
+  name       String     @unique
+  properties Property[]
 }
 
 model Picture {
@@ -53,6 +79,8 @@ model Picture {
   order      Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+
+  @@unique([propertyId, src])
 }
 
 // NextAuth.js Models

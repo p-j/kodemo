@@ -20,14 +20,17 @@
     "dev": "tsup --watch",
     "db:generate": "yarn with-env prisma generate",
     "lint": "TIMING=1 eslint \"src/**/*.ts\"",
-    "prebuild": "npm run generate",
-    "predev": "npm run generate",
-    "db:studio": "yarn with-env prisma studio"
+    "prebuild": "yarn run db:generate",
+    "predev": "yarn run db:generate",
+    "db:studio": "yarn with-env prisma studio",
+    "preseed": "tsx src/koliving/fetchKoliving.ts"
   },
   "dependencies": {
-    "@prisma/client": "^4.5.0"
+    "@prisma/client": "^4.5.0",
+    "bluebird": "^3.7.2"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.37",
     "config": "*",
     "eslint": "^8.12.0",
     "prisma": "^4.5.0",
@@ -35,6 +38,7 @@
     "tsconfig": "*",
     "tsup": "^6.4.0",
     "tsx": "^3.7.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "undici": "^5.12.0"
   }
 }

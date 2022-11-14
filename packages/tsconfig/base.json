@@ -17,6 +17,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "paths": {
