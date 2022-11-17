@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "moduleResolution": "node",
     "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
