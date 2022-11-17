@@ -1,7 +1,9 @@
 import { createTRPCNext } from '@trpc/next'
+import { createProxySSGHelpers } from '@trpc/react-query/ssg'
 import { httpBatchLink, loggerLink } from '@trpc/client'
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
-import type { AppRouter } from '@kodemo/api'
+import { appRouter, AppRouter } from '@kodemo/api'
+import { prisma } from '@kodemo/database'
 import { transformer } from '@kodemo/api/transformer'
 
 const getBaseUrl = () => {
@@ -29,14 +31,17 @@ export const trpc = createTRPCNext<AppRouter>({
   ssr: false,
 })
 
+// export const ssg = createProxySSGHelpers({
+//   router: appRouter,
+//   ctx: {
+//     session: null,
+//     prisma,
+//   },
+//   transformer,
+// })
+
 /**
  * Inference helpers for input types
  * @example type HelloInput = RouterInputs['example']['hello']
  **/
 export type RouterInputs = inferRouterInputs<AppRouter>
-
-/**
- * Inference helpers for output types
- * @example type HelloOutput = RouterOutputs['example']['hello']
- **/
-export type RouterOutputs = inferRouterOutputs<AppRouter>

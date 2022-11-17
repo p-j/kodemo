@@ -15,6 +15,7 @@ export const serverSchema = z.object({
   AUTH0_ISSUER: z.string(),
   VERCEL_URL: z.string().optional(),
   SKIP_ENV_VALIDATION: z.boolean().optional(),
+  WEB_SECRET: z.string(),
 })
 
 /**

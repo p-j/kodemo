@@ -13,6 +13,29 @@ const config = {
     // Enables hot-reload and easy integration for local packages
     transpilePackages: ['@kodemo/api', '@kodemo/auth', '@kodemo/database'],
   },
+  images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tailwindui.com',
+        // port: '',
+        // pathname: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dummyimage.com',
+        // port: '',
+        // pathname: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        // port: '',
+        // pathname: 'koliving/*',
+      },
+    ],
+  },
 }
 
 export default config
