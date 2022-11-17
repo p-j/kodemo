@@ -1,10 +1,13 @@
 import { router } from '../trpc'
-import { postRouter } from './post'
-import { authRouter } from './auth'
+import { authRouter } from '../router/auth'
+import { amenitiesRouter, listingsRouter, picturesRouter, propertiesRouter } from '../prisma-autogen/routers'
 
 export const appRouter = router({
-  post: postRouter,
   auth: authRouter,
+  properties: propertiesRouter,
+  listings: listingsRouter,
+  amenities: amenitiesRouter,
+  pictures: picturesRouter,
 })
 
 // export type definition of API
