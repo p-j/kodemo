@@ -26,18 +26,20 @@
     "preseed": "tsx src/koliving/fetchKoliving.ts"
   },
   "dependencies": {
-    "@prisma/client": "^4.5.0",
+    "@prisma/client": "^4.6.1",
     "bluebird": "^3.7.2"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.37",
     "config": "*",
     "eslint": "^8.12.0",
-    "prisma": "^4.5.0",
+    "prisma": "^4.6.1",
+    "prisma-trpc-generator": "^0.6.0",
     "rimraf": "^3.0.2",
+    "trpc-shield": "^0.1.2",
     "tsconfig": "*",
     "tsup": "^6.4.0",
-    "tsx": "^3.7.1",
+    "tsx": "^3.12.1",
     "typescript": "^4.8.4",
     "undici": "^5.12.0"
   }

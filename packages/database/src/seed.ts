@@ -1,6 +1,9 @@
 import { prisma } from '.'
-
 import { User, Prisma, PropertyType, RentType, State } from '@prisma/client'
+import { Convert, Koliving } from './preseed/koliving'
+import json from './preseed/data.json'
+
+const koliving = Convert.toKoliving(JSON.stringify(json))
 
 const OWNER = {
   name: 'John Owner',
@@ -15,11 +18,6 @@ const USER = {
 }
 
 const DEFAULT_USERS: (Partial<User> & { email: string })[] = [OWNER, USER]
-
-import { Convert, Koliving } from './koliving/koliving'
-import json from './koliving/data.json'
-const koliving = Convert.toKoliving(JSON.stringify(json))
-
 const AMENITIES = koliving.reduce(
   (
     acc,

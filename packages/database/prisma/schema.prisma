@@ -5,6 +5,22 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// need to update those generators to tRPC 10
+// generator trpc {
+//   provider          = "prisma-trpc-generator"
+//   output            = "../../api/src/prisma-autogen"
+//   withMiddleware    = false
+//   withShield        = false
+//   contextPath       = "~/src/context"
+//   isGenerateSelect  = true
+//   isGenerateInclude = true
+// }
+
+// generator trpc_shield {
+//   provider = "prisma-trpc-shield-generator"
+//   output   = "../../api/src/prisma-autogen/shield"
+// }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
