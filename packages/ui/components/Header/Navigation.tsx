@@ -10,7 +10,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const currencies = ['EUR', 'CAD', 'USD', 'AUD', 'GBP']
+const currencies = ['EUR']
 const navigation = {
   categories: [
     {

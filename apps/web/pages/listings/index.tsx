@@ -1,5 +1,4 @@
 import { Prisma, type Listing, type Property, type Picture } from '@prisma/client'
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { appRouter } from '@kodemo/api'
 import { createProxySSGHelpers } from '@trpc/react-query/ssg'
 import { prisma } from '@kodemo/database'
@@ -7,15 +6,14 @@ import { transformer } from '@kodemo/api/transformer'
 import { trpc } from '~/src/utils/trpc'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Header, MobileMenu, PrimaryNavigation } from '@kodemo/ui'
-import { useState } from 'react'
+import { Header } from '@kodemo/ui'
 
 const include = Prisma.validator<Prisma.ListingInclude>()({
   property: { include: { pictures: { where: { order: 0 } } } },
 })
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const ssg = await createProxySSGHelpers({
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
     router: appRouter,
     ctx: {
       session: null,
@@ -36,8 +34,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
 type ListingWithProperty = Listing & { property: Property & { pictures: Picture[] } }
 
-export default function ListingsPage(props: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function ListingsPage() {
   const { data: sessionData } = trpc.auth.getSession.useQuery()
   const { status, data: listings } = trpc.listings.findManyListing.useQuery<
     ListingWithProperty[],
@@ -55,14 +52,15 @@ export default function ListingsPage(props: InferGetStaticPropsType<typeof getSt
         </h2>
 
         <div tw="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-          {listings.map((listing) => (
+          {listings.map((listing, index) => (
             <Link key={listing.id} href={`/listings/${listing.id}`} className="group">
-              <div tw="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg">
+              <div tw="aspect-w-3 aspect-h-2 w-full overflow-hidden rounded-lg">
                 <Image
+                  priority={index < 2}
                   src={listing.property.pictures[0]?.src ?? 'https://dummyimage.com/384x384/eee/aaa'}
                   alt={listing.property.title}
                   width={384}
-                  height={384}
+                  height={256}
                   tw="h-full w-full object-cover object-center group-hover:opacity-75"
                 />
               </div>

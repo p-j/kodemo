@@ -1,9 +1,7 @@
 import { createTRPCNext } from '@trpc/next'
-import { createProxySSGHelpers } from '@trpc/react-query/ssg'
 import { httpBatchLink, loggerLink } from '@trpc/client'
-import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
-import { appRouter, AppRouter } from '@kodemo/api'
-import { prisma } from '@kodemo/database'
+import { inferRouterInputs } from '@trpc/server'
+import { AppRouter } from '@kodemo/api'
 import { transformer } from '@kodemo/api/transformer'
 
 const getBaseUrl = () => {

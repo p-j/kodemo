@@ -27,13 +27,15 @@
     "@trpc/react-query": "^10.0.0-rc.8",
     "@trpc/server": "^10.0.0-rc.8",
     "classnames": "^2.3.2",
+    "formik": "^2.2.9",
     "next": "^13.0.4",
     "next-auth": "^4.15.1",
     "next-seo": "^5.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lines-ellipsis": "^0.15.3",
-    "zod": "^3.18.0"
+    "zod": "^3.18.0",
+    "zod-formik-adapter": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",

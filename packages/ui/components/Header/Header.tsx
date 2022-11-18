@@ -20,8 +20,13 @@ export function Header({ user, children }: React.PropsWithChildren<IHeaderProps>
         <div aria-hidden="true" tw="absolute inset-0 overflow-hidden">
           <Image
             width={2400}
-            height={1600}
-            src="/images/anthony-persegol-lMasliEzBVI-unsplash.jpg"
+            height={children ? 1600 : 64}
+            priority
+            src={
+              children
+                ? '/images/anthony-persegol-lMasliEzBVI-unsplash4K.jpg'
+                : '/images/anthony-persegol-lMasliEzBVI-unsplashH200.jpg'
+            }
             alt=""
             tw="h-full w-full object-cover object-center"
           />

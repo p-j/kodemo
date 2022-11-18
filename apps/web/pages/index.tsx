@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import Image from 'next/image'
-import { Header, MobileMenu, PrimaryNavigation } from '@kodemo/ui'
+import { Header } from '@kodemo/ui'
 import { trpc } from '~/src/utils/trpc'
 
 export default function HomePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { data: sessionData } = trpc.auth.getSession.useQuery()
   return (
     <div tw="bg-white">

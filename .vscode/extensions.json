@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "heybourn.headwind",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "prisma.prisma",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "statelyai.stately-vscode"
+  ]
+}
