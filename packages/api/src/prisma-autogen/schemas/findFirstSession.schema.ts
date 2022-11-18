@@ -10,7 +10,9 @@ export const SessionFindFirstSchema = z.object({
   select: SessionSelectObjectSchema.optional(),
   include: SessionIncludeObjectSchema.optional(),
   where: SessionWhereInputObjectSchema.optional(),
-  orderBy: SessionOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([SessionOrderByWithRelationInputObjectSchema, SessionOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: SessionWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

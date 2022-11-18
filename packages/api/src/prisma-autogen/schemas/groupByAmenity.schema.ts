@@ -6,7 +6,9 @@ import { AmenityScalarFieldEnumSchema } from './enums/AmenityScalarFieldEnum.sch
 
 export const AmenityGroupBySchema = z.object({
   where: AmenityWhereInputObjectSchema.optional(),
-  orderBy: AmenityOrderByWithAggregationInputObjectSchema,
+  orderBy: z
+    .union([AmenityOrderByWithAggregationInputObjectSchema, AmenityOrderByWithAggregationInputObjectSchema.array()])
+    .optional(),
   having: AmenityScalarWhereWithAggregatesInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

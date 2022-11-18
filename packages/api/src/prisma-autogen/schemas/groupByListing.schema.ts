@@ -6,7 +6,9 @@ import { ListingScalarFieldEnumSchema } from './enums/ListingScalarFieldEnum.sch
 
 export const ListingGroupBySchema = z.object({
   where: ListingWhereInputObjectSchema.optional(),
-  orderBy: ListingOrderByWithAggregationInputObjectSchema,
+  orderBy: z
+    .union([ListingOrderByWithAggregationInputObjectSchema, ListingOrderByWithAggregationInputObjectSchema.array()])
+    .optional(),
   having: ListingScalarWhereWithAggregatesInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

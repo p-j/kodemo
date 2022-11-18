@@ -8,7 +8,9 @@ import { AmenityMaxAggregateInputObjectSchema } from './objects/AmenityMaxAggreg
 
 export const AmenityAggregateSchema = z.object({
   where: AmenityWhereInputObjectSchema.optional(),
-  orderBy: AmenityOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([AmenityOrderByWithRelationInputObjectSchema, AmenityOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: AmenityWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

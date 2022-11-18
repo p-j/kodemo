@@ -10,7 +10,9 @@ export const SessionFindManySchema = z.object({
   select: z.lazy(() => SessionSelectObjectSchema.optional()),
   include: z.lazy(() => SessionIncludeObjectSchema.optional()),
   where: SessionWhereInputObjectSchema.optional(),
-  orderBy: SessionOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([SessionOrderByWithRelationInputObjectSchema, SessionOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: SessionWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

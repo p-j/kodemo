@@ -10,7 +10,9 @@ export const PictureFindFirstSchema = z.object({
   select: PictureSelectObjectSchema.optional(),
   include: PictureIncludeObjectSchema.optional(),
   where: PictureWhereInputObjectSchema.optional(),
-  orderBy: PictureOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([PictureOrderByWithRelationInputObjectSchema, PictureOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: PictureWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

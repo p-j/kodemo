@@ -6,7 +6,9 @@ import { PictureScalarFieldEnumSchema } from './enums/PictureScalarFieldEnum.sch
 
 export const PictureGroupBySchema = z.object({
   where: PictureWhereInputObjectSchema.optional(),
-  orderBy: PictureOrderByWithAggregationInputObjectSchema,
+  orderBy: z
+    .union([PictureOrderByWithAggregationInputObjectSchema, PictureOrderByWithAggregationInputObjectSchema.array()])
+    .optional(),
   having: PictureScalarWhereWithAggregatesInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

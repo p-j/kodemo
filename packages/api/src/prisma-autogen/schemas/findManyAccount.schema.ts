@@ -10,7 +10,9 @@ export const AccountFindManySchema = z.object({
   select: z.lazy(() => AccountSelectObjectSchema.optional()),
   include: z.lazy(() => AccountIncludeObjectSchema.optional()),
   where: AccountWhereInputObjectSchema.optional(),
-  orderBy: AccountOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([AccountOrderByWithRelationInputObjectSchema, AccountOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: AccountWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

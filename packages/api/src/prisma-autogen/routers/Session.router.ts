@@ -37,7 +37,10 @@ export const sessionsRouter = router({
     const findFirstSession = await ctx.prisma.session.findFirst(input)
     return findFirstSession
   }),
-
+  findFirstSessionOrThrow: publicProcedure.input(SessionFindFirstSchema).query(async ({ ctx, input }) => {
+    const findFirstSessionOrThrow = await ctx.prisma.session.findFirstOrThrow(input)
+    return findFirstSessionOrThrow
+  }),
   findManySession: publicProcedure.input(SessionFindManySchema).query(async ({ ctx, input }) => {
     const findManySession = await ctx.prisma.session.findMany(input)
     return findManySession
@@ -46,11 +49,14 @@ export const sessionsRouter = router({
     const findUniqueSession = await ctx.prisma.session.findUnique(input)
     return findUniqueSession
   }),
-
-  groupBySession: publicProcedure.input(SessionGroupBySchema).query(async ({ ctx, input }) => {
-    const groupBySession = await ctx.prisma.session.groupBy(input)
-    return groupBySession
+  findUniqueSessionOrThrow: publicProcedure.input(SessionFindUniqueSchema).query(async ({ ctx, input }) => {
+    const findUniqueSessionOrThrow = await ctx.prisma.session.findUniqueOrThrow(input)
+    return findUniqueSessionOrThrow
   }),
+  //   groupBySession: publicProcedure.input(SessionGroupBySchema).query(async ({ ctx, input }) => {
+  //     const groupBySession = await ctx.prisma.session.groupBy(input)
+  //     return groupBySession
+  //   }),
   updateManySession: protectedProcedure.input(SessionUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManySession = await ctx.prisma.session.updateMany(input)
     return updateManySession

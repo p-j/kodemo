@@ -10,7 +10,9 @@ import { PictureSumAggregateInputObjectSchema } from './objects/PictureSumAggreg
 
 export const PictureAggregateSchema = z.object({
   where: PictureWhereInputObjectSchema.optional(),
-  orderBy: PictureOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([PictureOrderByWithRelationInputObjectSchema, PictureOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: PictureWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

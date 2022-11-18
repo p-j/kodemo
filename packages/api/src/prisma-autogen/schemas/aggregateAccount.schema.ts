@@ -10,7 +10,9 @@ import { AccountSumAggregateInputObjectSchema } from './objects/AccountSumAggreg
 
 export const AccountAggregateSchema = z.object({
   where: AccountWhereInputObjectSchema.optional(),
-  orderBy: AccountOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([AccountOrderByWithRelationInputObjectSchema, AccountOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: AccountWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

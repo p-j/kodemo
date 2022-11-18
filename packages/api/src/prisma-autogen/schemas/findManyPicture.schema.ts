@@ -10,7 +10,9 @@ export const PictureFindManySchema = z.object({
   select: z.lazy(() => PictureSelectObjectSchema.optional()),
   include: z.lazy(() => PictureIncludeObjectSchema.optional()),
   where: PictureWhereInputObjectSchema.optional(),
-  orderBy: PictureOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([PictureOrderByWithRelationInputObjectSchema, PictureOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: PictureWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

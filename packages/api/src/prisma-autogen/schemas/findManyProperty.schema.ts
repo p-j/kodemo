@@ -10,7 +10,9 @@ export const PropertyFindManySchema = z.object({
   select: z.lazy(() => PropertySelectObjectSchema.optional()),
   include: z.lazy(() => PropertyIncludeObjectSchema.optional()),
   where: PropertyWhereInputObjectSchema.optional(),
-  orderBy: PropertyOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([PropertyOrderByWithRelationInputObjectSchema, PropertyOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: PropertyWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

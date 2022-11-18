@@ -8,7 +8,12 @@ import { VerificationTokenScalarFieldEnumSchema } from './enums/VerificationToke
 export const VerificationTokenFindManySchema = z.object({
   select: z.lazy(() => VerificationTokenSelectObjectSchema.optional()),
   where: VerificationTokenWhereInputObjectSchema.optional(),
-  orderBy: VerificationTokenOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([
+      VerificationTokenOrderByWithRelationInputObjectSchema,
+      VerificationTokenOrderByWithRelationInputObjectSchema.array(),
+    ])
+    .optional(),
   cursor: VerificationTokenWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

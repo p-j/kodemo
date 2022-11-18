@@ -37,7 +37,10 @@ export const usersRouter = router({
     const findFirstUser = await ctx.prisma.user.findFirst(input)
     return findFirstUser
   }),
-
+  findFirstUserOrThrow: publicProcedure.input(UserFindFirstSchema).query(async ({ ctx, input }) => {
+    const findFirstUserOrThrow = await ctx.prisma.user.findFirstOrThrow(input)
+    return findFirstUserOrThrow
+  }),
   findManyUser: publicProcedure.input(UserFindManySchema).query(async ({ ctx, input }) => {
     const findManyUser = await ctx.prisma.user.findMany(input)
     return findManyUser
@@ -46,11 +49,14 @@ export const usersRouter = router({
     const findUniqueUser = await ctx.prisma.user.findUnique(input)
     return findUniqueUser
   }),
-
-  groupByUser: publicProcedure.input(UserGroupBySchema).query(async ({ ctx, input }) => {
-    const groupByUser = await ctx.prisma.user.groupBy(input)
-    return groupByUser
+  findUniqueUserOrThrow: publicProcedure.input(UserFindUniqueSchema).query(async ({ ctx, input }) => {
+    const findUniqueUserOrThrow = await ctx.prisma.user.findUniqueOrThrow(input)
+    return findUniqueUserOrThrow
   }),
+  //   groupByUser: publicProcedure.input(UserGroupBySchema).query(async ({ ctx, input }) => {
+  //     const groupByUser = await ctx.prisma.user.groupBy(input)
+  //     return groupByUser
+  //   }),
   updateManyUser: protectedProcedure.input(UserUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyUser = await ctx.prisma.user.updateMany(input)
     return updateManyUser

@@ -45,7 +45,12 @@ export const verificationtokensRouter = router({
     const findFirstVerificationToken = await ctx.prisma.verificationToken.findFirst(input)
     return findFirstVerificationToken
   }),
-
+  findFirstVerificationTokenOrThrow: publicProcedure
+    .input(VerificationTokenFindFirstSchema)
+    .query(async ({ ctx, input }) => {
+      const findFirstVerificationTokenOrThrow = await ctx.prisma.verificationToken.findFirstOrThrow(input)
+      return findFirstVerificationTokenOrThrow
+    }),
   findManyVerificationToken: publicProcedure.input(VerificationTokenFindManySchema).query(async ({ ctx, input }) => {
     const findManyVerificationToken = await ctx.prisma.verificationToken.findMany(input)
     return findManyVerificationToken
@@ -56,11 +61,16 @@ export const verificationtokensRouter = router({
       const findUniqueVerificationToken = await ctx.prisma.verificationToken.findUnique(input)
       return findUniqueVerificationToken
     }),
-
-  groupByVerificationToken: publicProcedure.input(VerificationTokenGroupBySchema).query(async ({ ctx, input }) => {
-    const groupByVerificationToken = await ctx.prisma.verificationToken.groupBy(input)
-    return groupByVerificationToken
-  }),
+  findUniqueVerificationTokenOrThrow: publicProcedure
+    .input(VerificationTokenFindUniqueSchema)
+    .query(async ({ ctx, input }) => {
+      const findUniqueVerificationTokenOrThrow = await ctx.prisma.verificationToken.findUniqueOrThrow(input)
+      return findUniqueVerificationTokenOrThrow
+    }),
+  //   groupByVerificationToken: publicProcedure.input(VerificationTokenGroupBySchema).query(async ({ ctx, input }) => {
+  //     const groupByVerificationToken = await ctx.prisma.verificationToken.groupBy(input)
+  //     return groupByVerificationToken
+  //   }),
   updateManyVerificationToken: protectedProcedure
     .input(VerificationTokenUpdateManySchema)
     .mutation(async ({ ctx, input }) => {

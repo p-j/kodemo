@@ -10,7 +10,9 @@ import { ListingSumAggregateInputObjectSchema } from './objects/ListingSumAggreg
 
 export const ListingAggregateSchema = z.object({
   where: ListingWhereInputObjectSchema.optional(),
-  orderBy: ListingOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([ListingOrderByWithRelationInputObjectSchema, ListingOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: ListingWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

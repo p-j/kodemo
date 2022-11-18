@@ -3,6 +3,8 @@ import { AccountCreateNestedManyWithoutUserInputObjectSchema } from './AccountCr
 import { SessionCreateNestedManyWithoutUserInputObjectSchema } from './SessionCreateNestedManyWithoutUserInput.schema'
 import { PropertyCreateNestedManyWithoutUserInputObjectSchema } from './PropertyCreateNestedManyWithoutUserInput.schema'
 import { PictureCreateNestedManyWithoutUserInputObjectSchema } from './PictureCreateNestedManyWithoutUserInput.schema'
+import { ProfileCreateNestedManyWithoutUserInputObjectSchema } from './ProfileCreateNestedManyWithoutUserInput.schema'
+import { FileCreateNestedManyWithoutUserInputObjectSchema } from './FileCreateNestedManyWithoutUserInput.schema'
 
 import type { Prisma } from '@prisma/client'
 
@@ -17,6 +19,8 @@ const Schema: z.ZodType<Prisma.UserCreateInput> = z
     sessions: z.lazy(() => SessionCreateNestedManyWithoutUserInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyCreateNestedManyWithoutUserInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureCreateNestedManyWithoutUserInputObjectSchema).optional(),
+    Profile: z.lazy(() => ProfileCreateNestedManyWithoutUserInputObjectSchema).optional(),
+    File: z.lazy(() => FileCreateNestedManyWithoutUserInputObjectSchema).optional(),
   })
   .strict()
 

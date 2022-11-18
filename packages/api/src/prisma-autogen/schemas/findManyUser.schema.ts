@@ -10,7 +10,9 @@ export const UserFindManySchema = z.object({
   select: z.lazy(() => UserSelectObjectSchema.optional()),
   include: z.lazy(() => UserIncludeObjectSchema.optional()),
   where: UserWhereInputObjectSchema.optional(),
-  orderBy: UserOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: UserWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

@@ -10,7 +10,9 @@ export const AccountFindFirstSchema = z.object({
   select: AccountSelectObjectSchema.optional(),
   include: AccountIncludeObjectSchema.optional(),
   where: AccountWhereInputObjectSchema.optional(),
-  orderBy: AccountOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([AccountOrderByWithRelationInputObjectSchema, AccountOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: AccountWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

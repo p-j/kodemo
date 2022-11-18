@@ -4,6 +4,8 @@ import { AccountOrderByRelationAggregateInputObjectSchema } from './AccountOrder
 import { SessionOrderByRelationAggregateInputObjectSchema } from './SessionOrderByRelationAggregateInput.schema'
 import { PropertyOrderByRelationAggregateInputObjectSchema } from './PropertyOrderByRelationAggregateInput.schema'
 import { PictureOrderByRelationAggregateInputObjectSchema } from './PictureOrderByRelationAggregateInput.schema'
+import { ProfileOrderByRelationAggregateInputObjectSchema } from './ProfileOrderByRelationAggregateInput.schema'
+import { FileOrderByRelationAggregateInputObjectSchema } from './FileOrderByRelationAggregateInput.schema'
 
 import type { Prisma } from '@prisma/client'
 
@@ -18,6 +20,8 @@ const Schema: z.ZodType<Prisma.UserOrderByWithRelationInput> = z
     sessions: z.lazy(() => SessionOrderByRelationAggregateInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyOrderByRelationAggregateInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureOrderByRelationAggregateInputObjectSchema).optional(),
+    Profile: z.lazy(() => ProfileOrderByRelationAggregateInputObjectSchema).optional(),
+    File: z.lazy(() => FileOrderByRelationAggregateInputObjectSchema).optional(),
   })
   .strict()
 

@@ -6,7 +6,12 @@ import { VerificationTokenScalarFieldEnumSchema } from './enums/VerificationToke
 
 export const VerificationTokenGroupBySchema = z.object({
   where: VerificationTokenWhereInputObjectSchema.optional(),
-  orderBy: VerificationTokenOrderByWithAggregationInputObjectSchema,
+  orderBy: z
+    .union([
+      VerificationTokenOrderByWithAggregationInputObjectSchema,
+      VerificationTokenOrderByWithAggregationInputObjectSchema.array(),
+    ])
+    .optional(),
   having: VerificationTokenScalarWhereWithAggregatesInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

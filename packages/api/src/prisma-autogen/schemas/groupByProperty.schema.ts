@@ -6,7 +6,9 @@ import { PropertyScalarFieldEnumSchema } from './enums/PropertyScalarFieldEnum.s
 
 export const PropertyGroupBySchema = z.object({
   where: PropertyWhereInputObjectSchema.optional(),
-  orderBy: PropertyOrderByWithAggregationInputObjectSchema,
+  orderBy: z
+    .union([PropertyOrderByWithAggregationInputObjectSchema, PropertyOrderByWithAggregationInputObjectSchema.array()])
+    .optional(),
   having: PropertyScalarWhereWithAggregatesInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

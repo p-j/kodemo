@@ -8,7 +8,12 @@ import { VerificationTokenMaxAggregateInputObjectSchema } from './objects/Verifi
 
 export const VerificationTokenAggregateSchema = z.object({
   where: VerificationTokenWhereInputObjectSchema.optional(),
-  orderBy: VerificationTokenOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([
+      VerificationTokenOrderByWithRelationInputObjectSchema,
+      VerificationTokenOrderByWithRelationInputObjectSchema.array(),
+    ])
+    .optional(),
   cursor: VerificationTokenWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

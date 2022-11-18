@@ -17,57 +17,54 @@ export const amenitiesRouter = router({
     const aggregateAmenity = await ctx.prisma.amenity.aggregate(input)
     return aggregateAmenity
   }),
-
   createManyAmenity: protectedProcedure.input(AmenityCreateManySchema).mutation(async ({ ctx, input }) => {
     const createManyAmenity = await ctx.prisma.amenity.createMany(input)
     return createManyAmenity
   }),
-
   createOneAmenity: protectedProcedure.input(AmenityCreateOneSchema).mutation(async ({ ctx, input }) => {
     const createOneAmenity = await ctx.prisma.amenity.create(input)
     return createOneAmenity
   }),
-
   deleteManyAmenity: protectedProcedure.input(AmenityDeleteManySchema).mutation(async ({ ctx, input }) => {
     const deleteManyAmenity = await ctx.prisma.amenity.deleteMany(input)
     return deleteManyAmenity
   }),
-
   deleteOneAmenity: protectedProcedure.input(AmenityDeleteOneSchema).mutation(async ({ ctx, input }) => {
     const deleteOneAmenity = await ctx.prisma.amenity.delete(input)
     return deleteOneAmenity
   }),
-
   findFirstAmenity: publicProcedure.input(AmenityFindFirstSchema).query(async ({ ctx, input }) => {
     const findFirstAmenity = await ctx.prisma.amenity.findFirst(input)
     return findFirstAmenity
   }),
-
+  findFirstAmenityOrThrow: publicProcedure.input(AmenityFindFirstSchema).query(async ({ ctx, input }) => {
+    const findFirstAmenityOrThrow = await ctx.prisma.amenity.findFirstOrThrow(input)
+    return findFirstAmenityOrThrow
+  }),
   findManyAmenity: publicProcedure.input(AmenityFindManySchema).query(async ({ ctx, input }) => {
     const findManyAmenity = await ctx.prisma.amenity.findMany(input)
     return findManyAmenity
   }),
-
   findUniqueAmenity: publicProcedure.input(AmenityFindUniqueSchema).query(async ({ ctx, input }) => {
     const findUniqueAmenity = await ctx.prisma.amenity.findUnique(input)
     return findUniqueAmenity
   }),
-
-  groupByAmenity: publicProcedure.input(AmenityGroupBySchema).query(async ({ ctx, input }) => {
-    const groupByAmenity = await ctx.prisma.amenity.groupBy(input)
-    return groupByAmenity
+  findUniqueAmenityOrThrow: publicProcedure.input(AmenityFindUniqueSchema).query(async ({ ctx, input }) => {
+    const findUniqueAmenityOrThrow = await ctx.prisma.amenity.findUniqueOrThrow(input)
+    return findUniqueAmenityOrThrow
   }),
-
+  //   groupByAmenity: publicProcedure.input(AmenityGroupBySchema).query(async ({ ctx, input }) => {
+  //     const groupByAmenity = await ctx.prisma.amenity.groupBy(input)
+  //     return groupByAmenity
+  //   }),
   updateManyAmenity: protectedProcedure.input(AmenityUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyAmenity = await ctx.prisma.amenity.updateMany(input)
     return updateManyAmenity
   }),
-
   updateOneAmenity: protectedProcedure.input(AmenityUpdateOneSchema).mutation(async ({ ctx, input }) => {
     const updateOneAmenity = await ctx.prisma.amenity.update(input)
     return updateOneAmenity
   }),
-
   upsertOneAmenity: protectedProcedure.input(AmenityUpsertSchema).mutation(async ({ ctx, input }) => {
     const upsertOneAmenity = await ctx.prisma.amenity.upsert(input)
     return upsertOneAmenity

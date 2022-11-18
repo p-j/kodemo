@@ -10,7 +10,9 @@ export const ListingFindFirstSchema = z.object({
   select: ListingSelectObjectSchema.optional(),
   include: ListingIncludeObjectSchema.optional(),
   where: ListingWhereInputObjectSchema.optional(),
-  orderBy: ListingOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([ListingOrderByWithRelationInputObjectSchema, ListingOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: ListingWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

@@ -6,7 +6,9 @@ import { UserScalarFieldEnumSchema } from './enums/UserScalarFieldEnum.schema'
 
 export const UserGroupBySchema = z.object({
   where: UserWhereInputObjectSchema.optional(),
-  orderBy: UserOrderByWithAggregationInputObjectSchema,
+  orderBy: z
+    .union([UserOrderByWithAggregationInputObjectSchema, UserOrderByWithAggregationInputObjectSchema.array()])
+    .optional(),
   having: UserScalarWhereWithAggregatesInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

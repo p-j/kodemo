@@ -8,7 +8,9 @@ import { UserMaxAggregateInputObjectSchema } from './objects/UserMaxAggregateInp
 
 export const UserAggregateSchema = z.object({
   where: UserWhereInputObjectSchema.optional(),
-  orderBy: UserOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: UserWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

@@ -10,7 +10,9 @@ export const AmenityFindFirstSchema = z.object({
   select: AmenitySelectObjectSchema.optional(),
   include: AmenityIncludeObjectSchema.optional(),
   where: AmenityWhereInputObjectSchema.optional(),
-  orderBy: AmenityOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([AmenityOrderByWithRelationInputObjectSchema, AmenityOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: AmenityWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),

@@ -6,15 +6,15 @@ generator client {
 }
 
 // need to update those generators to tRPC 10
-// generator trpc {
-//   provider          = "prisma-trpc-generator"
-//   output            = "../../api/src/prisma-autogen"
-//   withMiddleware    = false
-//   withShield        = false
-//   contextPath       = "~/src/context"
-//   isGenerateSelect  = true
-//   isGenerateInclude = true
-// }
+generator trpc {
+  provider          = "prisma-trpc-generator"
+  output            = "../../api/src/prisma-autogen"
+  withMiddleware    = false
+  withShield        = false
+  contextPath       = "~/src/context"
+  isGenerateSelect  = true
+  isGenerateInclude = true
+}
 
 // generator trpc_shield {
 //   provider = "prisma-trpc-shield-generator"
@@ -139,6 +139,8 @@ model User {
   sessions      Session[]
   properties    Property[]
   pictures      Picture[]
+  Profile       Profile[]
+  File          File[]
 }
 
 model VerificationToken {
@@ -147,4 +149,23 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Profile {
+  id         String  @id @default(cuid())
+  userId     String
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  address    String?
+  country    String?
+  city       String?
+  region     String?
+  postalCode String?
+  bio        String? @db.Text
+}
+
+model File {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  src    String
 }

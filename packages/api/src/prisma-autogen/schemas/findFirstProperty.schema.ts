@@ -10,7 +10,9 @@ export const PropertyFindFirstSchema = z.object({
   select: PropertySelectObjectSchema.optional(),
   include: PropertyIncludeObjectSchema.optional(),
   where: PropertyWhereInputObjectSchema.optional(),
-  orderBy: PropertyOrderByWithRelationInputObjectSchema.optional(),
+  orderBy: z
+    .union([PropertyOrderByWithRelationInputObjectSchema, PropertyOrderByWithRelationInputObjectSchema.array()])
+    .optional(),
   cursor: PropertyWhereUniqueInputObjectSchema.optional(),
   take: z.number().optional(),
   skip: z.number().optional(),
