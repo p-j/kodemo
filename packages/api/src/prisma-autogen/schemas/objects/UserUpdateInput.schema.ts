@@ -6,8 +6,8 @@ import { AccountUpdateManyWithoutUserNestedInputObjectSchema } from './AccountUp
 import { SessionUpdateManyWithoutUserNestedInputObjectSchema } from './SessionUpdateManyWithoutUserNestedInput.schema'
 import { PropertyUpdateManyWithoutUserNestedInputObjectSchema } from './PropertyUpdateManyWithoutUserNestedInput.schema'
 import { PictureUpdateManyWithoutUserNestedInputObjectSchema } from './PictureUpdateManyWithoutUserNestedInput.schema'
-import { ProfileUpdateManyWithoutUserNestedInputObjectSchema } from './ProfileUpdateManyWithoutUserNestedInput.schema'
 import { FileUpdateManyWithoutUserNestedInputObjectSchema } from './FileUpdateManyWithoutUserNestedInput.schema'
+import { ProfileUpdateOneWithoutUserNestedInputObjectSchema } from './ProfileUpdateOneWithoutUserNestedInput.schema'
 
 import type { Prisma } from '@prisma/client'
 
@@ -34,8 +34,8 @@ const Schema: z.ZodType<Prisma.UserUpdateInput> = z
     sessions: z.lazy(() => SessionUpdateManyWithoutUserNestedInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyUpdateManyWithoutUserNestedInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-    Profile: z.lazy(() => ProfileUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-    File: z.lazy(() => FileUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+    files: z.lazy(() => FileUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+    profile: z.lazy(() => ProfileUpdateOneWithoutUserNestedInputObjectSchema).optional(),
   })
   .strict()
 

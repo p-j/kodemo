@@ -67,10 +67,7 @@ export const verificationtokensRouter = router({
       const findUniqueVerificationTokenOrThrow = await ctx.prisma.verificationToken.findUniqueOrThrow(input)
       return findUniqueVerificationTokenOrThrow
     }),
-  //   groupByVerificationToken: publicProcedure.input(VerificationTokenGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByVerificationToken = await ctx.prisma.verificationToken.groupBy(input)
-  //     return groupByVerificationToken
-  //   }),
+
   updateManyVerificationToken: protectedProcedure
     .input(VerificationTokenUpdateManySchema)
     .mutation(async ({ ctx, input }) => {

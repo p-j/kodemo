@@ -33,7 +33,7 @@ const Schema: z.ZodType<Prisma.UserUncheckedUpdateWithoutProfileInput> = z
     sessions: z.lazy(() => SessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-    File: z.lazy(() => FileUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+    files: z.lazy(() => FileUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   })
   .strict()
 

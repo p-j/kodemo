@@ -3,11 +3,11 @@ import { AccountCreateNestedManyWithoutUserInputObjectSchema } from './AccountCr
 import { SessionCreateNestedManyWithoutUserInputObjectSchema } from './SessionCreateNestedManyWithoutUserInput.schema'
 import { PropertyCreateNestedManyWithoutUserInputObjectSchema } from './PropertyCreateNestedManyWithoutUserInput.schema'
 import { PictureCreateNestedManyWithoutUserInputObjectSchema } from './PictureCreateNestedManyWithoutUserInput.schema'
-import { ProfileCreateNestedManyWithoutUserInputObjectSchema } from './ProfileCreateNestedManyWithoutUserInput.schema'
+import { ProfileCreateNestedOneWithoutUserInputObjectSchema } from './ProfileCreateNestedOneWithoutUserInput.schema'
 
 import type { Prisma } from '@prisma/client'
 
-const Schema: z.ZodType<Prisma.UserCreateWithoutFileInput> = z
+const Schema: z.ZodType<Prisma.UserCreateWithoutFilesInput> = z
   .object({
     id: z.string().optional(),
     name: z.string().optional().nullable(),
@@ -18,8 +18,8 @@ const Schema: z.ZodType<Prisma.UserCreateWithoutFileInput> = z
     sessions: z.lazy(() => SessionCreateNestedManyWithoutUserInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyCreateNestedManyWithoutUserInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureCreateNestedManyWithoutUserInputObjectSchema).optional(),
-    Profile: z.lazy(() => ProfileCreateNestedManyWithoutUserInputObjectSchema).optional(),
+    profile: z.lazy(() => ProfileCreateNestedOneWithoutUserInputObjectSchema).optional(),
   })
   .strict()
 
-export const UserCreateWithoutFileInputObjectSchema = Schema
+export const UserCreateWithoutFilesInputObjectSchema = Schema

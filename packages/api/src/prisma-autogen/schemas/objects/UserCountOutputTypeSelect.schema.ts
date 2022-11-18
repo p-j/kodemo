@@ -8,8 +8,7 @@ const Schema: z.ZodType<Prisma.UserCountOutputTypeSelect> = z
     sessions: z.boolean().optional(),
     properties: z.boolean().optional(),
     pictures: z.boolean().optional(),
-    Profile: z.boolean().optional(),
-    File: z.boolean().optional(),
+    files: z.boolean().optional(),
   })
   .strict()
 

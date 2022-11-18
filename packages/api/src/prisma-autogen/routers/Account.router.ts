@@ -53,10 +53,7 @@ export const accountsRouter = router({
     const findUniqueAccountOrThrow = await ctx.prisma.account.findUniqueOrThrow(input)
     return findUniqueAccountOrThrow
   }),
-  // groupByAccount: publicProcedure.input(AccountGroupBySchema).query(async ({ ctx, input }) => {
-  //   const groupByAccount = await ctx.prisma.account.groupBy(input)
-  //   return groupByAccount
-  // }),
+
   updateManyAccount: protectedProcedure.input(AccountUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyAccount = await ctx.prisma.account.updateMany(input)
     return updateManyAccount

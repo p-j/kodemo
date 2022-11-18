@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { ProfileWhereUniqueInputObjectSchema } from './ProfileWhereUniqueInput.schema'
 import { ProfileUpdateWithoutUserInputObjectSchema } from './ProfileUpdateWithoutUserInput.schema'
 import { ProfileUncheckedUpdateWithoutUserInputObjectSchema } from './ProfileUncheckedUpdateWithoutUserInput.schema'
 import { ProfileCreateWithoutUserInputObjectSchema } from './ProfileCreateWithoutUserInput.schema'
@@ -7,9 +6,8 @@ import { ProfileUncheckedCreateWithoutUserInputObjectSchema } from './ProfileUnc
 
 import type { Prisma } from '@prisma/client'
 
-const Schema: z.ZodType<Prisma.ProfileUpsertWithWhereUniqueWithoutUserInput> = z
+const Schema: z.ZodType<Prisma.ProfileUpsertWithoutUserInput> = z
   .object({
-    where: z.lazy(() => ProfileWhereUniqueInputObjectSchema),
     update: z.union([
       z.lazy(() => ProfileUpdateWithoutUserInputObjectSchema),
       z.lazy(() => ProfileUncheckedUpdateWithoutUserInputObjectSchema),
@@ -21,4 +19,4 @@ const Schema: z.ZodType<Prisma.ProfileUpsertWithWhereUniqueWithoutUserInput> = z
   })
   .strict()
 
-export const ProfileUpsertWithWhereUniqueWithoutUserInputObjectSchema = Schema
+export const ProfileUpsertWithoutUserInputObjectSchema = Schema

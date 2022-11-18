@@ -53,10 +53,7 @@ export const amenitiesRouter = router({
     const findUniqueAmenityOrThrow = await ctx.prisma.amenity.findUniqueOrThrow(input)
     return findUniqueAmenityOrThrow
   }),
-  //   groupByAmenity: publicProcedure.input(AmenityGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByAmenity = await ctx.prisma.amenity.groupBy(input)
-  //     return groupByAmenity
-  //   }),
+
   updateManyAmenity: protectedProcedure.input(AmenityUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyAmenity = await ctx.prisma.amenity.updateMany(input)
     return updateManyAmenity

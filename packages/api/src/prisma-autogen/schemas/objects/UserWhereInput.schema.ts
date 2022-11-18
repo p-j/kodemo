@@ -6,8 +6,9 @@ import { AccountListRelationFilterObjectSchema } from './AccountListRelationFilt
 import { SessionListRelationFilterObjectSchema } from './SessionListRelationFilter.schema'
 import { PropertyListRelationFilterObjectSchema } from './PropertyListRelationFilter.schema'
 import { PictureListRelationFilterObjectSchema } from './PictureListRelationFilter.schema'
-import { ProfileListRelationFilterObjectSchema } from './ProfileListRelationFilter.schema'
 import { FileListRelationFilterObjectSchema } from './FileListRelationFilter.schema'
+import { ProfileRelationFilterObjectSchema } from './ProfileRelationFilter.schema'
+import { ProfileWhereInputObjectSchema } from './ProfileWhereInput.schema'
 
 import type { Prisma } from '@prisma/client'
 
@@ -44,8 +45,11 @@ const Schema: z.ZodType<Prisma.UserWhereInput> = z
     sessions: z.lazy(() => SessionListRelationFilterObjectSchema).optional(),
     properties: z.lazy(() => PropertyListRelationFilterObjectSchema).optional(),
     pictures: z.lazy(() => PictureListRelationFilterObjectSchema).optional(),
-    Profile: z.lazy(() => ProfileListRelationFilterObjectSchema).optional(),
-    File: z.lazy(() => FileListRelationFilterObjectSchema).optional(),
+    files: z.lazy(() => FileListRelationFilterObjectSchema).optional(),
+    profile: z
+      .union([z.lazy(() => ProfileRelationFilterObjectSchema), z.lazy(() => ProfileWhereInputObjectSchema)])
+      .optional()
+      .nullable(),
   })
   .strict()
 

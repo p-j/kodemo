@@ -53,10 +53,7 @@ export const filesRouter = router({
     const findUniqueFileOrThrow = await ctx.prisma.file.findUniqueOrThrow(input)
     return findUniqueFileOrThrow
   }),
-  //   groupByFile: publicProcedure.input(FileGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByFile = await ctx.prisma.file.groupBy(input)
-  //     return groupByFile
-  //   }),
+
   updateManyFile: protectedProcedure.input(FileUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyFile = await ctx.prisma.file.updateMany(input)
     return updateManyFile

@@ -3,11 +3,11 @@ import { StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdat
 
 import type { Prisma } from '@prisma/client'
 
-const Schema: z.ZodType<Prisma.FileUncheckedUpdateManyWithoutFileInput> = z
+const Schema: z.ZodType<Prisma.FileUncheckedUpdateManyWithoutFilesInput> = z
   .object({
     id: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
     src: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   })
   .strict()
 
-export const FileUncheckedUpdateManyWithoutFileInputObjectSchema = Schema
+export const FileUncheckedUpdateManyWithoutFilesInputObjectSchema = Schema

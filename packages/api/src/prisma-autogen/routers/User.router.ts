@@ -53,10 +53,7 @@ export const usersRouter = router({
     const findUniqueUserOrThrow = await ctx.prisma.user.findUniqueOrThrow(input)
     return findUniqueUserOrThrow
   }),
-  //   groupByUser: publicProcedure.input(UserGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByUser = await ctx.prisma.user.groupBy(input)
-  //     return groupByUser
-  //   }),
+
   updateManyUser: protectedProcedure.input(UserUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyUser = await ctx.prisma.user.updateMany(input)
     return updateManyUser

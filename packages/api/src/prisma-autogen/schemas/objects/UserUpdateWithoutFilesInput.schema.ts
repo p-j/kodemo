@@ -6,11 +6,11 @@ import { AccountUpdateManyWithoutUserNestedInputObjectSchema } from './AccountUp
 import { SessionUpdateManyWithoutUserNestedInputObjectSchema } from './SessionUpdateManyWithoutUserNestedInput.schema'
 import { PropertyUpdateManyWithoutUserNestedInputObjectSchema } from './PropertyUpdateManyWithoutUserNestedInput.schema'
 import { PictureUpdateManyWithoutUserNestedInputObjectSchema } from './PictureUpdateManyWithoutUserNestedInput.schema'
-import { ProfileUpdateManyWithoutUserNestedInputObjectSchema } from './ProfileUpdateManyWithoutUserNestedInput.schema'
+import { ProfileUpdateOneWithoutUserNestedInputObjectSchema } from './ProfileUpdateOneWithoutUserNestedInput.schema'
 
 import type { Prisma } from '@prisma/client'
 
-const Schema: z.ZodType<Prisma.UserUpdateWithoutFileInput> = z
+const Schema: z.ZodType<Prisma.UserUpdateWithoutFilesInput> = z
   .object({
     id: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
     name: z
@@ -33,8 +33,8 @@ const Schema: z.ZodType<Prisma.UserUpdateWithoutFileInput> = z
     sessions: z.lazy(() => SessionUpdateManyWithoutUserNestedInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyUpdateManyWithoutUserNestedInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-    Profile: z.lazy(() => ProfileUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+    profile: z.lazy(() => ProfileUpdateOneWithoutUserNestedInputObjectSchema).optional(),
   })
   .strict()
 
-export const UserUpdateWithoutFileInputObjectSchema = Schema
+export const UserUpdateWithoutFilesInputObjectSchema = Schema

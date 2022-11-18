@@ -53,10 +53,7 @@ export const sessionsRouter = router({
     const findUniqueSessionOrThrow = await ctx.prisma.session.findUniqueOrThrow(input)
     return findUniqueSessionOrThrow
   }),
-  //   groupBySession: publicProcedure.input(SessionGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupBySession = await ctx.prisma.session.groupBy(input)
-  //     return groupBySession
-  //   }),
+
   updateManySession: protectedProcedure.input(SessionUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManySession = await ctx.prisma.session.updateMany(input)
     return updateManySession

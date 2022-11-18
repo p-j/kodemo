@@ -18,7 +18,7 @@ const Schema: z.ZodType<Prisma.UserCreateWithoutProfileInput> = z
     sessions: z.lazy(() => SessionCreateNestedManyWithoutUserInputObjectSchema).optional(),
     properties: z.lazy(() => PropertyCreateNestedManyWithoutUserInputObjectSchema).optional(),
     pictures: z.lazy(() => PictureCreateNestedManyWithoutUserInputObjectSchema).optional(),
-    File: z.lazy(() => FileCreateNestedManyWithoutUserInputObjectSchema).optional(),
+    files: z.lazy(() => FileCreateNestedManyWithoutUserInputObjectSchema).optional(),
   })
   .strict()
 

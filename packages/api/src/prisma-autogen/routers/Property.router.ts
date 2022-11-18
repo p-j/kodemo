@@ -53,10 +53,7 @@ export const propertiesRouter = router({
     const findUniquePropertyOrThrow = await ctx.prisma.property.findUniqueOrThrow(input)
     return findUniquePropertyOrThrow
   }),
-  //   groupByProperty: publicProcedure.input(PropertyGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByProperty = await ctx.prisma.property.groupBy(input)
-  //     return groupByProperty
-  //   }),
+
   updateManyProperty: protectedProcedure.input(PropertyUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyProperty = await ctx.prisma.property.updateMany(input)
     return updateManyProperty

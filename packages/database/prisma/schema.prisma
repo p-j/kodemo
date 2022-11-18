@@ -139,8 +139,8 @@ model User {
   sessions      Session[]
   properties    Property[]
   pictures      Picture[]
-  Profile       Profile[]
-  File          File[]
+  files         File[]
+  profile       Profile?
 }
 
 model VerificationToken {
@@ -153,7 +153,7 @@ model VerificationToken {
 
 model Profile {
   id         String  @id @default(cuid())
-  userId     String
+  userId     String  @unique
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   address    String?
   country    String?

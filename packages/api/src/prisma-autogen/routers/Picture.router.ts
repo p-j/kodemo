@@ -53,10 +53,7 @@ export const picturesRouter = router({
     const findUniquePictureOrThrow = await ctx.prisma.picture.findUniqueOrThrow(input)
     return findUniquePictureOrThrow
   }),
-  //   groupByPicture: publicProcedure.input(PictureGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByPicture = await ctx.prisma.picture.groupBy(input)
-  //     return groupByPicture
-  //   }),
+
   updateManyPicture: protectedProcedure.input(PictureUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyPicture = await ctx.prisma.picture.updateMany(input)
     return updateManyPicture

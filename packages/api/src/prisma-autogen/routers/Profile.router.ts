@@ -53,10 +53,7 @@ export const profilesRouter = router({
     const findUniqueProfileOrThrow = await ctx.prisma.profile.findUniqueOrThrow(input)
     return findUniqueProfileOrThrow
   }),
-  //   groupByProfile: publicProcedure.input(ProfileGroupBySchema).query(async ({ ctx, input }) => {
-  //     const groupByProfile = await ctx.prisma.profile.groupBy(input)
-  //     return groupByProfile
-  //   }),
+
   updateManyProfile: protectedProcedure.input(ProfileUpdateManySchema).mutation(async ({ ctx, input }) => {
     const updateManyProfile = await ctx.prisma.profile.updateMany(input)
     return updateManyProfile
