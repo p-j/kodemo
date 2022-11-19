@@ -1,4 +1,5 @@
 import { Header } from '@kodemo/ui'
+import Link from 'next/link'
 import { trpc } from '~/src/utils/trpc'
 
 export default function HomePage() {
@@ -12,12 +13,12 @@ export default function HomePage() {
             Goodbye apartment hunting problems! With Koliving, everything is simple, fast, and happy. Enjoy your new
             life!
           </p>
-          <a
+          <Link
             href="/listings"
             tw="mt-8 inline-block rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100"
           >
             Browse the listings
-          </a>
+          </Link>
         </div>
       </Header>
 

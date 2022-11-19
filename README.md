@@ -1,16 +1,43 @@
-# Turborepo starter
+# Kodemo
 
-This is an official starter turborepo.
+## How to get it running
 
-## What's inside?
+- First, you need Docker ([install](https://docs.docker.com/engine/install/))
+- Then follow these step (skip as needed, if you already have nvm, yarn etc...)
 
-This turborepo includes the following packages/apps:
+```bash
+# install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+# clone the repository
+git clone git@github.com:p-j/kodemo.git
+cd kodemo
+# use nvm to install node
+nvm use
+# install yarn
+npm install -g yarn
+# use yarn to install dependencies
+yarn
+# start the database
+docker compose up -d
+# push the schema to the database
+yarn db:push
+# start the production server
+yarn start
+# you now have the production web app build running on your PORT 3000 
+```
+
+## How is it built
+
 
 ### Apps and Packages
 
 - `web`: a [Next.js](https://nextjs.org/) app
-- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `admin`: another [Next.js](https://nextjs.org/) app (useless, it simply demonstrate parallel builds)
 - `database`: [Prisma](https://prisma.io/) ORM wrapper to manage & access your database
+- `api`: [tRPC](https://trpc.io/) portable typesafe API (used with next api here but could be loaded in express, fastify...)
+- `ui`: a library of reusable React components
+- `auth`: [NextAuth.js](https://next-auth.js.org/) An authentication layer for Next.js
+- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -32,7 +59,7 @@ We use [Prisma](https://prisma.io/) to manage & access our database. As such you
 To make this process easier, we offer a [`docker-compose.yml`](https://docs.docker.com/compose/) file to deploy a MySQL server locally with a new database named `turborepo` (To change this update the `MYSQL_DATABASE` environment variable in the `docker-compose.yml` file):
 
 ```bash
-cd my-turborepo
+cd kodemo
 docker-compose up -d
 ```
 
@@ -53,11 +80,11 @@ npx prisma migrate dev
 If you need to push any existing migrations to the database, you can use either the Prisma db push or the Prisma migrate deploy command(s):
 
 ```bash
-yarn run db:push
+yarn db:push
 
 # OR
 
-yarn run db:migrate:deploy
+yarn db:migrate:deploy
 ```
 
 There is slight difference between the two commands & [Prisma offers a breakdown on which command is best to use](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push#choosing-db-push-or-prisma-migrate).
@@ -69,28 +96,17 @@ To do this update check the seed script located in `packages/database/src/seed.t
 Once edited run the following command to run tell Prisma to run the seed script defined in the Prisma configuration:
 
 ```bash
-yarn run db:seed
+yarn db:seed
 ```
 
 For further more information on migrations, seeding & more, we recommend reading through the [Prisma Documentation](https://www.prisma.io/docs/).
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx degit vercel/turbo/examples/with-prisma with-prisma
-cd with-prisma
-yarn install
-git init . && git add . && git commit -m "Init"
-```
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```bash
-yarn run build
+yarn build
 ```
 
 ### Develop
@@ -98,7 +114,15 @@ yarn run build
 To develop all apps and packages, run the following command:
 
 ```bash
-yarn run dev
+yarn dev
+```
+
+### Production Server
+
+To build & serve all apps, run the following command:
+
+```bash
+yarn start
 ```
 
 ## Useful Links
