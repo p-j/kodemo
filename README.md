@@ -11,6 +11,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 # clone the repository
 git clone git@github.com:p-j/kodemo.git
 cd kodemo
+# copy the example env file and edit it to match your setup
+cp .env.example .env
 # use nvm to install node
 nvm use
 # install yarn
