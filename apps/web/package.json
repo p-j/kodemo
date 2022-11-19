@@ -34,6 +34,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lines-ellipsis": "^0.15.3",
+    "sharp": "^0.31.2",
     "zod": "^3.18.0",
     "zod-formik-adapter": "^1.1.1"
   },
