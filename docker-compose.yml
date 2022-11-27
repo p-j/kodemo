@@ -1,8 +1,7 @@
-version: "3.8"
+version: '3.8'
 
 volumes:
   database:
-
 
 services:
   postgres:
@@ -12,8 +11,8 @@ services:
     ports:
       - 54320:5432
     environment:
-      - POSTGRES_DB=kodemo
-      - POSTGRES_USER=kodemo
-      - POSTGRES_PASSWORD=kodemo
+      - POSTGRES_DB=${POSTGRES_DB:-kodemo}
+      - POSTGRES_USER=${POSTGRES_USER:-kodemo}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-kodemo}
     volumes:
-      - database:/var/lib/mysql
+      - database:/var/lib/postgresql/data

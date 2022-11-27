@@ -1,5 +1,7 @@
 # Kodemo
 
+Demo application using a modern Typescript
+
 ## How to get it running
 
 - First, you need Docker ([install](https://docs.docker.com/engine/install/))
@@ -25,11 +27,10 @@ docker compose up -d
 yarn db:push
 # start the production server
 yarn start
-# you now have the production web app build running on your PORT 3000 
+# congrats, you now have the production web app build running on your PORT 3000
 ```
 
 ## How is it built
-
 
 ### Apps and Packages
 
