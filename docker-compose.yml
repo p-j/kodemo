@@ -16,3 +16,10 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-kodemo}
     volumes:
       - database:/var/lib/postgresql/data
+
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - 8081:8081
